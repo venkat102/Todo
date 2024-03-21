@@ -18,7 +18,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<FrappeProvider socketPort="9003">
+			<FrappeProvider socketPort="9003" siteName="http://todo-react:8003/">
 				<Header></Header>
 				<RightBarContext.Provider value={{formToggle, toggleForm}}>
 
@@ -26,7 +26,7 @@ function App() {
 				{/* <div className="grid md:grid-cols-12 gap-4"> */}
 					<LeftBar></LeftBar>
 					<MainTab></MainTab>
-					{ formToggle && <TodoForm></TodoForm>}
+					<TodoForm></TodoForm>
 				</div>
 				</RightBarContext.Provider>
 			</FrappeProvider>

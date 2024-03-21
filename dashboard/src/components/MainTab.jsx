@@ -7,7 +7,7 @@ const MainTab = () => {
 	const {toggleForm} = useContext(RightBarContext)
 	return (
 		<>
-			<div className="top-28 md:col-span-10 grow">
+			<div className="top-28 flex-grow">
 				<div className="flex justify-end my-5 mx-8">
 					<Button label="Add Todo" click={toggleForm}></Button>
 				</div>

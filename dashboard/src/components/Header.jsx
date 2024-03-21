@@ -5,37 +5,37 @@ const Header = () => {
 		{
 			label: "Total Task",
 			count: 10,
-			color: "bg-sky-400"
+			color: "bg-sky"
 		},
 		{
 			label: "Todo",
 			count: 7,
-			color: "bg-red-400"
+			color: "bg-red"
 		},
 		{
 			label: "In-Progress",
 			count: 10,
-			color: "bg-green-400"
+			color: "bg-green"
 		},
 		{
 			label: "Ready to Test",
 			count: 50,
-			color: "bg-pink-400"
+			color: "bg-pink"
 		},
 		{
 			label: "Testing In-Progress",
 			count: 40,
-			color: "bg-amber-400"
+			color: "bg-amber"
 		},
 		{
 			label: "Ready for Deployment",
 			count: 20,
-			color: "bg-purple-400"
+			color: "bg-purple"
 		},
 		{
 			label: "Deployed",
 			count: 10,
-			color: "bg-indigo-400"
+			color: "bg-indigo"
 		}
 	]
 	return <>
