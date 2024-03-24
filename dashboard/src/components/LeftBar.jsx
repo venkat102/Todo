@@ -26,7 +26,7 @@ const LeftBar = () => {
 								}
 							></SideBarItem>
 						</li>
-						<li>
+						{/* <li>
 							<SideBarItem
 								label={"Kanban"}
 								icon={
@@ -41,7 +41,7 @@ const LeftBar = () => {
 									</svg>
 								}
 							></SideBarItem>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</aside>

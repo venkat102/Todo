@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import Button from "./Button";
 import ListItem from "./ListItem";
-import {RightBarContext} from "../App"
+import { RightBarContext } from "../pages/MainPage";
 import { useContext } from "react";
-// eslint-disable-next-line react/prop-types
-const MainTab = () => {
-	const {toggleForm} = useContext(RightBarContext)
+
+
+const MainTab = ({status, todo}) => {
+	const { toggleForm } = useContext(RightBarContext);
 	return (
 		<>
 			<div className="top-28 flex-grow">
@@ -15,9 +17,8 @@ const MainTab = () => {
 				<div className="bg-white shadow-lg mx-8">
 					<div className="  overflow-hidden">
 						<ul className="divide-y divide-gray-200">
-								<ListItem></ListItem>
+							{ todo?.map((row)=><ListItem status={status} todoItem={row} key={row.name} />) }
 
-								<ListItem></ListItem>
 						</ul>
 					</div>
 				</div>

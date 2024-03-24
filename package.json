@@ -12,5 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {}
+  "dependencies": {
+    "react-hook-form": "^7.51.1"
+  }
 }
