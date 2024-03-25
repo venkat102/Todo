@@ -1,19 +1,36 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { RightBarContext } from "../pages/MainPage";
+import { useFrappeDeleteDoc } from "frappe-react-sdk";
+import { toast } from "sonner";
 
 /* eslint-disable react/prop-types */
 const ListItem = ({ status, todoItem }) => {
+	const { formToggle, toggleForm, setFormId, mutateList, mutateStatus } =
+		useContext(RightBarContext);
 	const [isFocused, setFocus] = useState(false);
+	const {deleteDoc} = useFrappeDeleteDoc();
 
 	return (
 		<>
 			<li
-				className="p-4 flex justify-between items-center user-card shadow-md rounded-lg transition-all duration-500"
+				className="p-4 flex justify-between items-center user-card shadow-md rounded-lg transition-all duration-1000"
 				onMouseEnter={() => setFocus(true)}
 				onMouseLeave={() => setFocus(false)}
-				style={{backgroundColor: isFocused?`${status[todoItem?.status]?.color}20`:'#fff'}}
+				style={{
+					backgroundColor: isFocused
+						? `${status[todoItem?.status]?.color}20`
+						: "#fff",
+				}}
 			>
-				<div className="grid grid-rows-2 grid-flow-col gap-2">
+				<div
+					className="grid grid-rows-2 grid-flow-col gap-2 cursor-pointer"
+					onClick={() => {
+						if (!formToggle) {
+							toggleForm();
+						}
+						setFormId(todoItem);
+					}}
+				>
 					<div className="font-bold"> {todoItem?.title}</div>
 					<div className="ml-3 font-light">{todoItem?.description}</div>
 				</div>
@@ -29,7 +46,19 @@ const ListItem = ({ status, todoItem }) => {
 						{status[todoItem?.status]?.title}
 					</span>
 
-					<button className="text-gray-500 hover:text-red-600">
+					<button
+						className="text-gray-500 hover:text-red-600"
+						onClick={() => {
+							deleteDoc("My Todo", todoItem?.name).then((res)=>{
+								if (res.exc){
+									toast.error("Unable to delete Todo")
+								}
+								toast.success("Todo deleted!")
+								mutateList();
+								mutateStatus();
+							});
+						}}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

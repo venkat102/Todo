@@ -10,6 +10,7 @@ export const RightBarContext = createContext(true);
 
 const MainPage = () => {
 	let statusMap = {};
+	const [formId, setFormId] = useState({});
 	const [formToggle, setFormToggle] = useState(false);
 
 	const toggleForm = () => {
@@ -74,6 +75,9 @@ const MainPage = () => {
 		asDict: true,
 	});
 
+
+	const [mutateList, mutateStatus] = [todoList.mutate, statusList.mutate]
+
 	return (
 		<React.Fragment>
 			<Toaster richColors>
@@ -81,12 +85,11 @@ const MainPage = () => {
 					toast.error("Something went wrong")}
 			</Toaster>
 			<Header status={statusList.data} />
-			<RightBarContext.Provider value={{ formToggle, toggleForm }}>
+			<RightBarContext.Provider value={{ formToggle, toggleForm, formId, setFormId, mutateList, mutateStatus}}>
 				<div className="flex">
-					{/* <div className="grid md:grid-cols-12 gap-4"> */}
 					<LeftBar />
 					<MainTab status={statusMap} todo={todoList.data} />
-					<TodoForm />
+					<TodoForm status={statusList.data} statusNameMap={statusMap} />
 				</div>
 			</RightBarContext.Provider>
 		</React.Fragment>

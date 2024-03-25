@@ -6,12 +6,18 @@ import { useContext } from "react";
 
 
 const MainTab = ({status, todo}) => {
-	const { toggleForm } = useContext(RightBarContext);
+	const { formToggle, toggleForm, setFormId } = useContext(RightBarContext);
 	return (
 		<>
 			<div className="top-28 flex-grow">
 				<div className="flex justify-end my-5 mx-8">
-					<Button label="Add Todo" click={toggleForm}></Button>
+					<Button label="Add New Todo" click={()=>{
+						setFormId('new')
+						if (!formToggle){
+							toggleForm()
+						}
+						setFormId({})
+					}}></Button>
 				</div>
 
 				<div className="bg-white shadow-lg mx-8">
